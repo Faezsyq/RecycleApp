@@ -31,8 +31,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     @NonNull
     @Override
     public ContactViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_contact, null)
-        return new ContactAdapter(.ContactViewHolder(view));
+        View view = mInflater.inflate(R.layout.item_contact, null);
+        return new ContactAdapter.ContactViewHolder(view);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
             tvNama = itemView.findViewById(R.id.tvNama);
             tvNoHP = itemView.findViewById(R.id.tvNoHP);
-            tvStatus = itemView.findViewById(R.id.tvStatus;
+            tvStatus = itemView.findViewById(R.id.tvStatus);
         }
         public void bindData(final ContactModel item){
             ivAvatar.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
