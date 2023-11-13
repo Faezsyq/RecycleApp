@@ -42,9 +42,12 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     @Override
     public int getItemCount() {
+
         return contactList.size();
     }
-
+    public void setItems(List<ContactModel> items){
+        contactList = items;
+    }
     public class ContactViewHolder extends RecyclerView.ViewHolder{
         TextView tvNama, tvNoHP, tvStatus;
         ImageView ivAvatar;
@@ -55,16 +58,18 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             tvNoHP = itemView.findViewById(R.id.tvNoHP);
             tvStatus = itemView.findViewById(R.id.tvStatus;
         }
-
         public void bindData(final ContactModel item){
             ivAvatar.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
             tvNama.setText(item.getNama());
             tvNoHP.setText(item.getNohp());
             tvStatus.setText(item.getStatus());
-            itemView.setOnClickListener(new View.OnClickListener(){
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick()
+                public void onClick(View view) { listener.onItemClick(item); }
             });
         }
+    }
+    public interface OnItemClickListener {
+        void onItemClick(ContactModel item);
     }
 }
